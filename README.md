@@ -3,6 +3,7 @@ PRYO Oppgaver
 Liste over ting jeg har gjort i PRYO uka.
 
 Praktisk
+
 -Montert ny Harddisk i pc
 
 Teknisk
