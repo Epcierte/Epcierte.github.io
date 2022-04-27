@@ -2,9 +2,7 @@
 <html>
 <body style="background-color:powderblue;">
 
-
-
-<h3 style="padding: 10px; border: 2px solid Black;" style="font-family:Comic Sans MS;">Hva jeg har gjort på Pryo.</h3>
+<h3 style="font-family:Comic Sans MS;">Hva jeg har gjort på Pryo.</h3>
 
 <p>Dette er en liste over hva jeg har gjort i pryo uka.</p>
 
@@ -53,6 +51,25 @@ bytttilblå.addEventListener("click",()=>{
    body.style.background = "powderblue";
 })
 </script>
+
+<button class="green">Bytt til grønn</button>
+<script> const bytttilgrønn = document.querySelector(".green");
+
+bytttilgrønn.addEventListener("click",()=>{
+   const body =  document.body; 
+   body.style.background = "green";
+})
+</script>
+
+<button class="gray">Bytt til grå</button>
+<script> const bytttilgrå = document.querySelector(".gray");
+
+bytttilgrå.addEventListener("click",()=>{
+   const body =  document.body; 
+   body.style.background = "gray";
+})
+</script>
+
 
 <p>-Jeg har også lagd en klokke som viser tiden akkuratt nå</p>
 <script>
