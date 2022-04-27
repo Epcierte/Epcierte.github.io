@@ -2,24 +2,6 @@
 <html>
 <body style="background-color:powderblue;">
 
-<p>Klokka</p>
-<script>
-function doDate()
-{
-    var str = "";
-
-
-    var now = new Date();
-
-    str += " " + now.getHours() +":" + now.getMinutes() + ":" + now.getSeconds();
-    document.getElementById("Klokka").innerHTML = str;
-}
-
-setInterval(doDate, 100);
-</script>
-
-<div id="Klokka"></div>
-
 <h1 style="font-family:Comic Sans MS;">Hva jeg har gjort på pryo</h1>
 
 <p>Dette er en liste over hva jeg har gjort i pryo uka.</p>
@@ -49,6 +31,9 @@ setInterval(doDate, 100);
 <p>-Jeg har gjort endringer på index.html filen min via den andre pcen ved hjelp av HTML editoreren KATE.</p>
 <p>-Jeg har pushet ut endringene til websiden via den andre pcen.</p>
 
+<h2 style="font-family:Comic Sans MS;">JavaSript Oppgaver</h2>
+
+<p>-Jeg har lagd noen knapper som bytter bakgrunnsfarge på denne websiden<p>
 <button class="pink">Bytt til rosa</button>
 <script> const bytttilrød = document.querySelector(".pink");
 
@@ -67,5 +52,23 @@ bytttilblå.addEventListener("click",()=>{
 })
 </script>
 
-<body>
-<html>
+<p>-Jeg har også lagd en klokke som viser tiden akkuratt nå</p>
+<script>
+function doDate()
+{
+    var str = "";
+
+
+    var now = new Date();
+
+    str += " " + now.getHours() +":" + now.getMinutes() + ":" + now.getSeconds();
+    document.getElementById("Klokka").innerHTML = str;
+}
+
+setInterval(doDate, 100);
+</script>
+
+<div id="Klokka"></div>
+
+</body>
+</html>
