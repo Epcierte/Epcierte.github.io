@@ -2,6 +2,24 @@
 <html>
 <body style="background-color:powderblue;">
 
+<p>Klokka</p>
+<script>
+function doDate()
+{
+    var str = "";
+
+
+    var now = new Date();
+
+    str += " " + now.getHours() +":" + now.getMinutes() + ":" + now.getSeconds();
+    document.getElementById("Klokka").innerHTML = str;
+}
+
+setInterval(doDate, 100);
+</script>
+
+<div id="Klokka"></div>
+
 <h1 style="font-family:Comic Sans MS;">Hva jeg har gjort på pryo</h1>
 
 <p>Dette er en liste over hva jeg har gjort i pryo uka.</p>
