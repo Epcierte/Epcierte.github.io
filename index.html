@@ -1,7 +1,6 @@
  <!DOCTYPE html>
 <html>
 <body style="background-color:white;">
-
 <h3 style="font-family:Comic Sans MS;">Hva jeg har gjort på Pryo.</h3>
 
 <p>Dette er en liste over hva jeg har gjort i pryo uka.</p>
@@ -98,6 +97,81 @@ setInterval(doDate, 100);
 </script>
 
 <div id="Klokka" style="font-size: 3em;"></div>
+
+<h2 style="font-family:Comic Sans MS;">JSON</h2>
+<p>-Jeg har lagd en oversikt over været i tromsø akkuratt nå<p>
+ 
+<style>
+table, th, td {
+  border:3px solid black;
+}
+</style>
+<body>
+
+<table>
+  <tr>
+    <th><h2>Temperatur</h2></th>
+    <th><h2>Nedbør</h2></th>
+    <th><h2>Vind hastighet</h2></th>
+    <th><h2>Vind kast Hastighet</h2></th>
+    <th><h2>Luft fuktighet</h2></th> 
+</tr> 
+  <tr>
+    <th><h2><div id="temp"></div></h2></th>
+    <th><h2><div id="regn"></div></h2></th>
+    <th><h2><div id="vindh"></div></h2></th>
+    <th><h2><div id="vindkh"></div></h2></th>
+    <th><h2><div id="fukt"></div></h2></th>
+ </tr>
+</table>
+  <meta charset="utf-8">
+
+    <script>
+// api url
+const api_url = 
+      "https://api.met.no/weatherapi/nowcast/2.0/complete?lat=69.6827&lon=18.9427";
+  
+// Defining async function
+async function getapi(url) {
+    
+    // Storing response
+    const response = await fetch(url);
+    
+    // Storing data in form of JSON
+    var obj = await response.json();
+    console.log(obj);
+
+
+        var temp = obj["properties"]["timeseries"][0]["data"]["instant"]["details"]["air_temperature"] +  obj["properties"]["meta"]["units"]["air_temperature"] + "<br>";
+      	//document.write("Temperatur " + obj["properties"]["timeseries"][0]["data"]["instant"]["details"]["air_temperature"] + obj["properties"]["meta"]["units"]["air_temperature"] + "<br>");
+       	document.getElementById("temp").innerHTML = temp;
+      	
+	var regn = obj["properties"]["timeseries"][0]["data"]["instant"]["details"]["precipitation_rate"] + obj["properties"]["meta"]["units"]["precipitation_amount"] + "<br>";
+	//document.write("Nedbør " + obj["properties"]["timeseries"][0]["data"]["instant"]["details"]["precipitation_rate"] + obj["properties"]["meta"]["units"]["precipitation_amount"] + "<br>";
+	document.getElementById("regn").innerHTML = regn;
+        
+	var vindh = obj["properties"]["timeseries"][0]["data"]["instant"]["details"]["wind_speed"] + obj["properties"]["meta"]["units"]["wind_speed"] + "<br>";
+        //document.write("Vind Hastighet " + obj["properties"]["timeseries"][0]["data"]["instant"]["details"]["wind_speed"] + obj["properties"]["meta"]["units"]["wind_speed"] + "<br>");
+	document.getElementById("vindh").innerHTML = vindh;
+       
+       	var vindkh = obj["properties"]["timeseries"][0]["data"]["instant"]["details"]["wind_speed_of_gust"] + obj["properties"]["meta"]["units"]["wind_speed_of_gust"] + "<br>";
+	//document.write("Vind kast hastighet " + obj["properties"]["timeseries"][0]["data"]["instant"]["details"]["wind_speed_of_gust"] + obj["properties"]["meta"]["units"]["wind_speed_of_gust"] + "<br>");
+	document.getElementById("vindkh").innerHTML = vindkh;
+
+	var fukt = obj["properties"]["timeseries"][0]["data"]["instant"]["details"]["relative_humidity"] + obj["properties"]["meta"]["units"]["relative_humidity"] + "<br>";
+	//document.write("Fuktighet " + obj["properties"]["timeseries"][0]["data"]["instant"]["details"]["relative_humidity"] + obj["properties"]["meta"]["units"]["relative_humidity"] + "<br>");
+	document.getElementById("fukt").innerHTML = fukt
+
+}
+// Calling that async function
+getapi(api_url);
+
+
+    //var json = `{"type":"Feature","geometry":{"type":"Point","coordinates":[18.9427,69.6827,58]},"properties":{"meta":{"updated_at":"2022-04-28T07:32:48Z","units":{"air_temperature":"celsius","precipitation_amount":"mm","precipitation_rate":"mm/h","relative_humidity":"%","wind_from_direction":"degrees","wind_speed":"m/s","wind_speed_of_gust":"m/s"},"radar_coverage":"ok"},"timeseries":[{"time":"2022-04-28T07:35:00Z","data":{"instant":{"details":{"air_temperature":-1.5,"precipitation_rate":0.4,"relative_humidity":67.1,"wind_from_direction":316.9,"wind_speed":6.1,"wind_speed_of_gust":10.5}},"next_1_hours":{"summary":{"symbol_code":"lightsnow"},"details":{"precipitation_amount":0.2}}}},{"time":"2022-04-28T07:40:00Z","data":{"instant":{"details":{"precipitation_rate":0.4}}}},{"time":"2022-04-28T07:45:00Z","data":{"instant":{"details":{"precipitation_rate":0.3}}}},{"time":"2022-04-28T07:50:00Z","data":{"instant":{"details":{"precipitation_rate":0.2}}}},{"time":"2022-04-28T07:55:00Z","data":{"instant":{"details":{		"precipitation_rate":0.1}}}},{"time":"2022-04-28T08:00:00Z","data":{"instant":{"details":{"precipitation_rate":0.0}}}},{"time":"2022-04-28T08:05:00Z","data":{"instant":{"details":{"precipitation_rate":0.0}}}},{"time":"2022-04-28T08:10:00Z","data":{"instant":{"details":{"precipitation_rate":0.0}}}},{"time":"2022-04-28T08:15:00Z","data":{"instant":{"details":{"precipitation_rate":0.0}}}},{"time":"2022-04-28T08:20:00Z","data":{"instant":{"details":{"precipitation_rate":0.0}}}},{"time":"2022-04-28T08:25:00Z","data":{"instant":{"details":{"precipitation_rate":0.0}}}},{"time":"2022-04-28T08:30:00Z","data":{"instant":{"details":{"precipitation_rate":0.1}}}},{"time":"2022-04-28T08:35:00Z","data":{"instant":{"details":{"precipitation_rate":0.2}}}},{"time":"2022-04-28T08:40:00Z","data":{"instant":{"details":{"precipitation_rate":0.1}}}},{"time":"2022-04-28T08:45:00Z","data":{"instant":{"details":{"precipitation_rate":0.0}}}},{"time":"2022-04-28T08:50:00Z","data":{"instant":{"details":{"precipitation_rate":0.0}}}},{"ti		me":"2022-04-28T08:55:00Z","data":{"instant":{"details":{"precipitation_rate":0.0}}}},{"time":"2022-04-28T09:00:00Z","data":{"instant":{"details":{"precipitation_rate":0.0}}}},{"time":"2022-04-28T09:05:00Z","data":{"instant":{"details":{"precipitation_rate":0.0}}}},{"time":"2022-04-28T09:10:00Z","data":{"instant":{"details":{"precipitation_rate":0.0}}}},{"time":"2022-04-28T09:15:00Z","data":{"instant":{"details":{"precipitation_rate":0.2}}}},{"time":"2022-04-28T09:20:00Z","data":{"instant":{"details":{"precipitation_rate":0.2}}}},{"time":"2022-04-28T09:25:00Z","data":{"instant":{"details":{"precipitation_rate":0.0}}}}]}}`;
+
+
+
+ </script>
 
 </body>
 </html>
